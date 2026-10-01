@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 
+import os
+
 app = Flask(__name__)
 
-names = []
+names = [os.environ["FIRST_NAME_IN_LIST"]]
 
 @app.route('/')
 def home():
