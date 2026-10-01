@@ -1,20 +1,20 @@
-<!doctype html>
+{% extends "life_template.html" %}
+{% block title %} throw and catch page {% endblock %}
+{% block body %}
+    hello from templates
+    {% if names %}
+    
+    <ul>
+        {% for name in names %}
+        <li>{{name}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p> no names yet.</p>
+    {% endif %}
+    <form action="/catch" method="post">
+        <input id="name" name="name" placeholder="name">
+        <button type="submit">add my name dawg.</button>
+    </form>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>My Little Website</title>
-  <link rel="stylesheet" href="/static/main.css">
-  <script src="static/main.js"></script>
-</head>
-
-<body>
-  <h1>HELLO {{user}}</h1>
-  {% if user == "unknown" %}
-  <p> I don't think I know who you are. Could you throw a <pre>?userName=something</pre> at the end of the old url there for me? </p>
-  {% endif %}
-  <button id="tester">test</button>
-
-</body>
-</html>
+{% endblock %}

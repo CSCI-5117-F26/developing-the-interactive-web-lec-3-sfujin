@@ -2,11 +2,16 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+names = []
+
 @app.route('/')
 def home():
-  return "<a href='/hi'>Hi</a>"
+  global names
+  return render_template("main.html", names=names)
 
-@app.route('/hi', methods=['GET'])
-def hello_world():
-  user_name = request.args.get("userName", "unknown")
-  return render_template('main.html', user=user_name)
+@app.route('/hi', methods=['POST'])
+def hi():
+  global names
+  if request.form.get("name"):
+    names.append(request.form.get("name"))
+  return render_template('main.html', names=names)
