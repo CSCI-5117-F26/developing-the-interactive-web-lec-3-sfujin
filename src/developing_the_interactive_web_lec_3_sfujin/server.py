@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-names = [os.environ["FIRST_NAME_IN_LIST"]]
+names = []
 
 @app.route('/')
 def home():
